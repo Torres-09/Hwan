@@ -86,12 +86,8 @@ public enum ErrorCode {
     E409_DUPLICATE(CONFLICT, false, "CF000", "이미 존재합니다"),
     E409_DUPLICATE_NICKNAME(CONFLICT, false, "CF001", "이미 사용중인 닉네임입니다.\n다른 닉네임을 이용해주세요"),
     E409_DUPLICATE_USER(CONFLICT, false, "CF002", "이미 회원가입하셨습니다.\n해당 계정으로 로그인 해주세요"),
-    E409_DUPLICATE_DELETE_REQUEST_STORE(CONFLICT, false, "CF003", "이미 해당 가게를 삭제 요청 하였습니다."),
-    E409_DUPLICATE_VISIT_HISTORY(CONFLICT, false, "CF004", "오늘 이미 방문 인증한 가게입니다.\n내일 다시 방문 인증해주세요 :)"),
-    E409_DUPLICATE_FEEDBACK(CONFLICT, false, "CF005", "오늘 이미 피드백을 추가하였습니다.\n내일 다시 인증해주세요 :)"),
-    E409_DUPLICATE_BOSS_ACCOUNT(CONFLICT, false, "CF006", "이미 가입 완료한 사장님입니다"),
-    E409_DUPLICATE_EMAIL(CONFLICT, false, "CF007", "이미 존재하는 이메일 입니다"),
-    E409_ALREADY_CONNECTED_SOCIAL(CONFLICT, false, "CF008", "이미 소셜 계정에 연결된 유저입니다"),
+    E409_DUPLICATE_EMAIL(CONFLICT, false, "CF003", "이미 존재하는 이메일 입니다"),
+    E409_ALREADY_CONNECTED_SOCIAL(CONFLICT, false, "CF004", "이미 소셜 계정에 연결된 유저입니다"),
 
 
     /**
@@ -110,7 +106,6 @@ public enum ErrorCode {
      * 500 Internal Server Exception (서버 내부 에러)
      */
     E500_INTERNAL_SERVER(INTERNAL_SERVER, true, "IS000", "예상치 못한 에러가 발생하였습니다ㅠ.ㅠ\n잠시 후 다시 시도해주세요!"),
-    E500_INTERNAL_SERVER_UPDATE_STORE_CONCURRENCY(INTERNAL_SERVER, true, "IS002", "일시적으로 다른 사용자와 동시에 가게 수정 요청을 하였습니다\n잠시 후 다시 시도해주세요!"),
 
 
     /**
