@@ -1,10 +1,11 @@
 package hwan2da.SMDFA.domain.member.model;
 
 import hwan2da.SMDFA.domain.common.EnumModel;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
