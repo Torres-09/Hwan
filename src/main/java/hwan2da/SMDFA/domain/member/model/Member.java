@@ -21,6 +21,6 @@ public class Member extends BaseEntity {
     @Column(length = 50)
     private String nickname;
 
-    @OneToMany(mappedBy = "Member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private final List<Post> userPosts = new ArrayList<>();
 }
