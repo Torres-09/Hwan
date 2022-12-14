@@ -1,5 +1,5 @@
 ### 버전 정보
-- 'org.springframework.boot' version '2.7.3'
+- SpringBoot version '2.7.3'
+- Spring Batch
 - Java 11
 - QueryDSL 5.0.0
-- Spring Batch
