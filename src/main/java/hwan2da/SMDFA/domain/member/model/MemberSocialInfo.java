@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Embeddable
@@ -18,15 +17,16 @@ public class MemberSocialInfo {
     @Column(length = 100)
     private String socialEmail;
 
+    @Column(length = 30)
     @Enumerated(EnumType.STRING)
-    private MemberSocialType memberSocialType;
+    private MemberSocialType socialType;
 
-    private MemberSocialInfo(@NotNull String socialEmail, @NotNull MemberSocialType memberSocialType) {
+    private MemberSocialInfo(String socialEmail,MemberSocialType socialType) {
         this.socialEmail = socialEmail;
-        this.memberSocialType = memberSocialType;
+        this.socialType = socialType;
     }
 
-    public static MemberSocialInfo of(String socialEmail, MemberSocialType memberSocialType) {
-        return new MemberSocialInfo(socialEmail, memberSocialType);
+    public static MemberSocialInfo of(String socialEmail, MemberSocialType socialType) {
+        return new MemberSocialInfo(socialEmail, socialType);
     }
 }
