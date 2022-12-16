@@ -7,10 +7,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +31,18 @@ public class Member extends BaseEntity {
     private final List<Post> memberPosts = new ArrayList<>();
 
     @Builder(access = AccessLevel.PRIVATE)
-    private Member(@Nullable String socialId, @Nullable MemberSocialType socialType, @Nullable String name, @NotNull MemberMarketingConsent marketingConsent) {
-        this.memberSocialInfo = MemberSocialInfo.of(socialId, socialType);
-        this.nickname = name;
+    private Member(String socialEmail, MemberSocialType socialType, String nickname, MemberMarketingConsent marketingConsent) {
+        this.memberSocialInfo = MemberSocialInfo.of(socialEmail, socialType);
+        this.nickname = nickname;
         this.marketingConsent = marketingConsent;
+    }
+
+    public static Member newMember(String socialEmail, MemberSocialType socialType, String nickname) {
+        return Member.builder()
+                .socialEmail(socialEmail)
+                .socialType(socialType)
+                .nickname(nickname)
+                .marketingConsent(MemberMarketingConsent.UNVERIFIED)
+                .build();
     }
 }
