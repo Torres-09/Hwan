@@ -2,10 +2,7 @@ package hwan2da.SMDFA.domain.member.model.dto;
 
 import hwan2da.SMDFA.domain.member.model.Member;
 import hwan2da.SMDFA.domain.member.model.MemberSocialType;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+
 public class CreateMemberRequest {
     @NotBlank
     private String socialEmail;
@@ -22,6 +20,13 @@ public class CreateMemberRequest {
 
     // 닉네임 조건 체크 어노테이션 이후 추가
     private String nickname;
+
+    @Builder
+    private CreateMemberRequest(String socialEmail, MemberSocialType socialType, String nickname) {
+        this.socialEmail = socialEmail;
+        this.socialType = socialType;
+        this.nickname = nickname;
+    }
 
     public Member toEntity() {
         return Member.newMember(socialEmail, socialType, nickname);
