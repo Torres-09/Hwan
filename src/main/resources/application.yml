@@ -8,6 +8,21 @@ server:
       enabled: true
       force: true
 
+external:
+  client:
+    kakao:
+      profile:
+        base-url: https://kapi.kakao.com
+        url: /v2/user/me
+    google:
+      profile:
+        base-url: https://www.googleapis.com
+        url: /oauth2/v2/userinfo
+    naver:
+      profile:
+        base-url: https://openapi.naver.com
+        url: /v1/nid/me
+
 spring:
   batch:
     jdbc:
@@ -32,7 +47,7 @@ spring:
       client:
         registration:
           naver:
-            client-id: ABn5CQF1i1WioNmERIfy
+            client-id: bWmyogM0PGu9x6jxz8eX
             client-secret: ${{secrets.NAVER_CLIENT_SECRET}}
             scope:
               - name
