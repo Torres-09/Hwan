@@ -1,5 +1,6 @@
 package hwan2da.SMDFA.domain.auth.service;
 
+import hwan2da.SMDFA.config.provider.AuthProvider;
 import hwan2da.SMDFA.domain.auth.model.dto.SignUpRequest;
 import hwan2da.SMDFA.domain.member.repository.MemberRepository;
 import hwan2da.SMDFA.domain.member.service.MemberService;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService{
     private final MemberRepository memberRepository;
     private final MemberService memberService;
+    private final AuthProviderFinder authProviderFinder;
+
 
     public Long signUp(SignUpRequest request) {
-        // request로 소셜 정보를 받아와서 Email을 추출해야한다.
-
-        return memberService.registerMember(request.toCreateMemberRequest(null));
+        AuthProvider authProvider = authProviderFinder.findAuthProvider(request.getSocialType());
+        String socialEmail = authProvider.getSocialEmail(request.getToken());
+        return memberService.registerMember(request.toCreateMemberRequest(socialEmail));
     }
 }
