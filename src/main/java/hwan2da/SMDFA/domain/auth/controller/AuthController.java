@@ -1,6 +1,5 @@
 package hwan2da.SMDFA.domain.auth.controller;
 
-import hwan2da.SMDFA.config.session.SessionConstant;
 import hwan2da.SMDFA.domain.auth.model.dto.SignUpRequest;
 import hwan2da.SMDFA.domain.auth.model.dto.SignUpResponse;
 import hwan2da.SMDFA.domain.auth.service.AuthService;
