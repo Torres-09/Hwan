@@ -1,5 +1,1 @@
 rootProject.name = 'SMDFA'
-include 'hwancommunity-domain'
-include 'hwancommunity-domain:hwancommunity-domain-rds'
-findProject(':hwancommunity-domain:hwancommunity-domain-rds')?.name = 'hwancommunity-domain-rds'
-
