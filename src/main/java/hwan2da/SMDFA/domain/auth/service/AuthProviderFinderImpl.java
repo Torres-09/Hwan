@@ -1,6 +1,7 @@
 package hwan2da.SMDFA.domain.auth.service;
 
 import hwan2da.SMDFA.config.provider.AuthProvider;
+import hwan2da.SMDFA.config.provider.KakaoAuthProvider;
 import hwan2da.SMDFA.config.provider.NaverAuthProvider;
 import hwan2da.SMDFA.domain.member.model.MemberSocialType;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +17,12 @@ public class AuthProviderFinderImpl implements AuthProviderFinder{
     private static final Map<MemberSocialType, AuthProvider> authProviderMap = new EnumMap<>(MemberSocialType.class);
 
     private final NaverAuthProvider naverAuthProvider;
+    private final KakaoAuthProvider kakaoAuthProvider;
 
     @PostConstruct
     void initializeAuthProviders() {
         authProviderMap.put(MemberSocialType.NAVER, naverAuthProvider);
+        authProviderMap.put(MemberSocialType.KAKAO, kakaoAuthProvider);
     }
 
     @Override
