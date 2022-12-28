@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class CreateMemberRequest {
+    private Long socialId;
     @NotBlank
     private String socialEmail;
 
@@ -24,13 +24,14 @@ public class CreateMemberRequest {
     private String nickname;
 
     @Builder
-    private CreateMemberRequest(String socialEmail, MemberSocialType socialType, String nickname) {
+    private CreateMemberRequest(Long socialId, String socialEmail, MemberSocialType socialType, String nickname) {
+        this.socialId = socialId;
         this.socialEmail = socialEmail;
         this.socialType = socialType;
         this.nickname = nickname;
     }
 
     public Member toEntity() {
-        return Member.newMember(socialEmail, socialType, nickname);
+        return Member.newMember(socialId, socialEmail, socialType, nickname);
     }
 }

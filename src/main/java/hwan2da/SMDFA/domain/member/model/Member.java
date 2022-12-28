@@ -31,14 +31,15 @@ public class Member extends BaseEntity {
     private final List<Post> memberPosts = new ArrayList<>();
 
     @Builder(access = AccessLevel.PRIVATE)
-    private Member(String socialEmail, MemberSocialType socialType, String nickname, MemberMarketingConsent marketingConsent) {
-        this.memberSocialInfo = MemberSocialInfo.of(socialEmail, socialType);
+    private Member(Long socialId, String socialEmail, MemberSocialType socialType, String nickname, MemberMarketingConsent marketingConsent) {
+        this.memberSocialInfo = MemberSocialInfo.of(socialId, socialEmail, socialType);
         this.nickname = nickname;
         this.marketingConsent = marketingConsent;
     }
 
-    public static Member newMember(String socialEmail, MemberSocialType socialType, String nickname) {
+    public static Member newMember(Long socialId, String socialEmail, MemberSocialType socialType, String nickname) {
         return Member.builder()
+                .socialId(socialId)
                 .socialEmail(socialEmail)
                 .socialType(socialType)
                 .nickname(nickname)
