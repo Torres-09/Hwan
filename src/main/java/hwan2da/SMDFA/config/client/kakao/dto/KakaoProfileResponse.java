@@ -1,11 +1,11 @@
 package hwan2da.SMDFA.config.client.kakao.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-@ToString
-@Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Data
 public class KakaoProfileResponse {
-    private String email;
+    private Long id;
+    private String connected_at;
+    private KakaoAccount kakao_account;
 }

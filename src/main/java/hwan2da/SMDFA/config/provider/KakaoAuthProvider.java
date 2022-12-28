@@ -17,6 +17,6 @@ public class KakaoAuthProvider implements AuthProvider{
     @Override
     public String getSocialEmail(String token) {
         KakaoProfileResponse response = kakaoAuthApiClient.getProfileInfo(HttpHeaderUtils.withBearerToken(token));
-        return response.getEmail();
+        return response.getKakao_account().getEmail();
     }
 }
