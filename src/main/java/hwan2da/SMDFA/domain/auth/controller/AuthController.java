@@ -5,12 +5,14 @@ import hwan2da.SMDFA.domain.auth.model.dto.SignUpResponse;
 import hwan2da.SMDFA.domain.auth.service.AuthService;
 import hwan2da.SMDFA.domain.common.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import static hwan2da.SMDFA.config.session.SessionConstant.*;
 
@@ -23,7 +25,7 @@ public class AuthController {
 
     @PostMapping("/v1/signup")
     public ApiResponse<SignUpResponse> signUp(
-            @RequestBody SignUpRequest request
+            @Valid @RequestBody SignUpRequest request
             ) {
         Long memberId = authService.signUp(request);
         httpSession.setAttribute(MEMBER_ID, memberId);
