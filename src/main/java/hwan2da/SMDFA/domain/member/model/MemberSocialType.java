@@ -1,13 +1,13 @@
 package hwan2da.SMDFA.domain.member.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import hwan2da.SMDFA.domain.common.EnumModel;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
+@ToString
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum MemberSocialType implements EnumModel {
 
@@ -22,5 +22,14 @@ public enum MemberSocialType implements EnumModel {
     @Override
     public String getKey() {
         return name();
+    }
+
+    @JsonCreator
+    public static MemberSocialType from(String text) {
+        for(MemberSocialType type : MemberSocialType.values()){
+            if(type.getDescription().equals(text))
+                return type;
+        }
+        throw new IllegalArgumentException();
     }
 }
