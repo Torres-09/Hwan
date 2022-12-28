@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 
 @Component
 @RequiredArgsConstructor
@@ -16,9 +17,7 @@ public class KakaoAuthApiClient {
     public KakaoProfileResponse getProfileInfo(@RequestHeader("Authorization") String accessToken) {
         return webClient.get()
                 .uri("https://kapi.kakao.com/v2/user/me")
-                .headers(httpHeaders -> {
-                    httpHeaders.setBearerAuth(accessToken);
-                })
+                .header("Authorization", accessToken)
                 .retrieve()
                 .bodyToFlux(KakaoProfileResponse.class)
                 .blockFirst();
