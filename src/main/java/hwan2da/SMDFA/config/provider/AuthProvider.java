@@ -1,5 +1,9 @@
 package hwan2da.SMDFA.config.provider;
 
+import hwan2da.SMDFA.domain.auth.model.dto.SocialResponse;
+
+import java.util.List;
+
 public interface AuthProvider {
-    String getSocialEmail(String token);
+    SocialResponse getSocialResponse(String token);
 }
