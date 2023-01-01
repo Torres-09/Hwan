@@ -5,7 +5,7 @@ import hwan2da.SMDFA.domain.member.model.MemberSocialType;
 import hwan2da.SMDFA.domain.member.model.QMember;
 import lombok.RequiredArgsConstructor;
 
-import static hwan2da.SMDFA.domain.member.model.QMember.*;
+import static hwan2da.SMDFA.domain.member.model.QMember.member;
 
 
 @RequiredArgsConstructor
@@ -14,12 +14,12 @@ public class MemberRepositoryCustomImpl implements MemberRepositoryCustom{
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public boolean existMemberBySocialInfo(String socialEmail, MemberSocialType socialType) {
+    public boolean existMemberBySocialInfo(String socialId, MemberSocialType socialType) {
         return queryFactory
                 .selectOne()
                 .from(member)
                 .where(
-                        member.memberSocialInfo.socialEmail.eq(socialEmail),
+                        member.memberSocialInfo.socialId.eq(socialId),
                         member.memberSocialInfo.socialType.eq(socialType)
                 ).fetchFirst() != null;
     }
