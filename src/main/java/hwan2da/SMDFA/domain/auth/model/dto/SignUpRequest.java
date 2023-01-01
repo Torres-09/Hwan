@@ -18,8 +18,9 @@ public class SignUpRequest {
 
     private MemberSocialType socialType;
 
-    public CreateMemberRequest toCreateMemberRequest(String socialEmail) {
+    public CreateMemberRequest toCreateMemberRequest(String socialId, String socialEmail) {
         return CreateMemberRequest.builder()
+                .socialId(socialId)
                 .socialEmail(socialEmail)
                 .socialType(socialType)
                 .nickname(nickname)
