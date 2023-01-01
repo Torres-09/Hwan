@@ -14,7 +14,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Transactional
     public Long registerMember(CreateMemberRequest request) {
-        if (memberRepository.existMemberBySocialInfo(request.getSocialEmail(), request.getSocialType())) {
+        if (memberRepository.existMemberBySocialInfo(request.getSocialId(), request.getSocialType())) {
             // 회원이 존재하는 경우 실패 로직 추가해야 함
             throw null;
         }
