@@ -1,11 +1,11 @@
 package hwan2da.SMDFA.config.client.naver.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-@ToString
-@Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NaverProfileResponse {
+    // 수정필요
     private String email;
 }
