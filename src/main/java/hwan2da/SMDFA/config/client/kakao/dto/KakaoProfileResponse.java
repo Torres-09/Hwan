@@ -5,7 +5,7 @@ import lombok.*;
 
 @Data
 public class KakaoProfileResponse {
-    private Long id;
+    private String id;
     private String connected_at;
     private KakaoAccount kakao_account;
 }
