@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CreateMemberRequest {
-    private Long socialId;
+    private String socialId;
     @NotBlank
     private String socialEmail;
 
@@ -24,7 +24,7 @@ public class CreateMemberRequest {
     private String nickname;
 
     @Builder
-    private CreateMemberRequest(Long socialId, String socialEmail, MemberSocialType socialType, String nickname) {
+    private CreateMemberRequest(String socialId, String socialEmail, MemberSocialType socialType, String nickname) {
         this.socialId = socialId;
         this.socialEmail = socialEmail;
         this.socialType = socialType;
