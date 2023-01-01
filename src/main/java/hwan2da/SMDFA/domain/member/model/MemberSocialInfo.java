@@ -14,7 +14,7 @@ import javax.persistence.Enumerated;
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberSocialInfo {
-    private Long socialId;
+    private String socialId;
 
     @Column(length = 100)
     private String socialEmail;
@@ -23,13 +23,13 @@ public class MemberSocialInfo {
     @Enumerated(EnumType.STRING)
     private MemberSocialType socialType;
 
-    private MemberSocialInfo(Long socialId, String socialEmail,MemberSocialType socialType) {
+    private MemberSocialInfo(String socialId, String socialEmail, MemberSocialType socialType) {
         this.socialId = socialId;
         this.socialEmail = socialEmail;
         this.socialType = socialType;
     }
 
-    public static MemberSocialInfo of(Long socialId, String socialEmail, MemberSocialType socialType) {
+    public static MemberSocialInfo of(String socialId, String socialEmail, MemberSocialType socialType) {
         return new MemberSocialInfo(socialId, socialEmail, socialType);
     }
 }
