@@ -33,4 +33,10 @@ public class AuthController {
         SignUpResponse response = SignUpResponse.of(httpSession.getId(), memberId);
         return ApiResponse.success(response);
     }
+
+    /**
+     * TODO: 소셜 로그인 기능 추가
+     * 소셜 로그인 API 추가
+     * - AuthController
+     */
 }
