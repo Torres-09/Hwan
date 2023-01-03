@@ -35,7 +35,7 @@ public class AuthController {
     }
 
     /**
-     * TODO: 소셜 로그인 기능 추가
+     * TODO [$63b451b556bf3a0009a601cd]: 소셜 로그인 기능 추가
      * 소셜 로그인 API 추가
      * - AuthController
      */
