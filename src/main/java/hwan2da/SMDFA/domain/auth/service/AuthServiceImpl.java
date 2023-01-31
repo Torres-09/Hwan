@@ -19,22 +19,22 @@ public class AuthServiceImpl implements AuthService{
     private final AuthProviderFinder authProviderFinder;
 
 
-    @Override
-    public Long signUp(SignUpRequest request) {
-        AuthProvider authProvider = authProviderFinder.findAuthProvider(request.getSocialType());
-        SocialResponse socialResponse = authProvider.getSocialResponse(request.getToken());
-        return memberService.registerMember(request.toCreateMemberRequest(socialResponse.getSocialId(), socialResponse.getSocialEmail()));
-    }
+        @Override
+        public Long signUp(SignUpRequest request) {
+            AuthProvider authProvider = authProviderFinder.findAuthProvider(request.getSocialType());
+            SocialResponse socialResponse = authProvider.getSocialResponse(request.getToken());
+            return memberService.registerMember(request.toCreateMemberRequest(socialResponse.getSocialId(), socialResponse.getSocialEmail()));
+        }
 
-    @Override
-    public Long login(LoginRequest request) {
-        AuthProvider authProvider = authProviderFinder.findAuthProvider(request.getSocialType());
-        SocialResponse socialResponse = authProvider.getSocialResponse(request.getToken());
-        return findMemberBySocialIdAndSocialType(socialResponse, request.getSocialType()).getId();
-    }
+        @Override
+        public Long login(LoginRequest request) {
+            AuthProvider authProvider = authProviderFinder.findAuthProvider(request.getSocialType());
+            SocialResponse socialResponse = authProvider.getSocialResponse(request.getToken());
+            return findMemberBySocialIdAndSocialType(socialResponse, request.getSocialType()).getId();
+        }
 
-    public Member findMemberBySocialIdAndSocialType(SocialResponse socialResponse, MemberSocialType type) {
-        Member member = memberRepository.findUserBySocial(socialResponse.getSocialId(), type);
+        public Member findMemberBySocialIdAndSocialType(SocialResponse socialResponse, MemberSocialType type) {
+            Member member = memberRepository.findUserBySocial(socialResponse.getSocialId(), type);
         if (member == null) {
             throw new IllegalArgumentException();
         }
