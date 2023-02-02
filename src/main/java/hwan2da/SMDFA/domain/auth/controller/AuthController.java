@@ -11,10 +11,7 @@ import hwan2da.SMDFA.domain.common.dto.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -39,7 +36,7 @@ public class AuthController {
         return ApiResponse.success(response);
     }
 
-    @PostMapping("/auth/login")
+    @PostMapping("/login")
     public ApiResponse<LoginResponse> login(
             @Valid @RequestBody LoginRequest request
     ) {
@@ -51,11 +48,17 @@ public class AuthController {
     }
 
     @Auth
-    @PostMapping("/auth/logout")
+    @PostMapping("/logout")
     public ApiResponse<String> logout(
             @Valid @MemberId Long memberId
     ) {
         httpSession.invalidate();
         return ApiResponse.success("로그아웃이 되었습니다.");
+    }
+
+    @GetMapping("/test")
+    public ApiResponse<String> test(
+    ) {
+        return ApiResponse.success("테스트입니다.");
     }
 }

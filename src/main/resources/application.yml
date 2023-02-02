@@ -72,6 +72,20 @@ spring:
     username: cos
     password: cos1234
 
+# JPA 설정
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+        show_sql: true
+  redis:
+    host: localhost
+    port: 6379
+    password: 1234
+
 # 포트설정 및 인코딩
 server:
   port: 8080
@@ -82,15 +96,10 @@ server:
       enabled: true
       force: true
 
-# JPA 설정
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-          show_sql: true
+# apple
+apple:
+  client_id: dummy-apple-client_id
+  issuer: dummy-apple-issue
 ---
 # 프로필 dev
 spring:
