@@ -66,9 +66,6 @@ dependencies {
 
 	// batch 추가
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
-
-	// MySQL
-	implementation 'com.mysql:mysql-connector-j:8.0.21'
 }
 
 tasks.named('test') {
