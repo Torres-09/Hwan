@@ -106,3 +106,19 @@ spring:
   config:
     activate:
       on-profile: dev
+  # 데이터 베이스
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${ secret.datasource.url }
+    username: ${secret.datasource.username}
+    password: ${secret.aws.datasource.password}
+
+  # JPA 설정
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+        show_sql: true
