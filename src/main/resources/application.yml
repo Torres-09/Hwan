@@ -109,9 +109,9 @@ spring:
   # 데이터 베이스
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: ${ secret.datasource.url }
-    username: ${secret.datasource.username}
-    password: ${secret.aws.datasource.password}
+    url: ${ secret.DATASOURCE_URL }
+    username: ${secret.DATASOURCE_USERNAME}
+    password: ${secret.aws.DATASOURCE_PASSWORD}
 
   # JPA 설정
   jpa:
