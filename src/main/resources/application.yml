@@ -65,7 +65,14 @@ spring:
     activate:
       on-profile: local
 
-  # JPA 설정
+# 데이터 베이스
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/security
+    username: cos
+    password: cos1234
+
+# JPA 설정
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -74,15 +81,6 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
         show_sql: true
-
-# 데이터 베이스
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/security
-    username: cos
-    password: cos1234
-
-# 레디스 설정
   redis:
     host: localhost
     port: 6379
@@ -98,14 +96,29 @@ server:
       enabled: true
       force: true
 
-# 애플 secret
+# apple
 apple:
   client_id: dummy-apple-client_id
   issuer: dummy-apple-issue
-
 ---
 # 프로필 dev
 spring:
   config:
     activate:
       on-profile: dev
+  # 데이터 베이스
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${ secret.DATASOURCE_URL }
+    username: ${secret.DATASOURCE_USERNAME}
+    password: ${secret.aws.DATASOURCE_PASSWORD}
+
+  # JPA 설정
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+        show_sql: true
