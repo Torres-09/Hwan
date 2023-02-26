@@ -4,7 +4,7 @@ COPY gradle gradle
 COPY build.gradle .
 COPY settings.gradle .
 COPY src src
-RUN chomd +x ./gradlew
+RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 
 FROM openjdk:11

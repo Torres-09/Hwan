@@ -67,10 +67,10 @@ spring:
 
 # 데이터 베이스
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/security
-    username: cos
-    password: cos1234
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/local?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: local
+    password: local123
 
 # JPA 설정
   jpa:
@@ -108,10 +108,10 @@ spring:
       on-profile: dev
   # 데이터 베이스
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     url: ${ secret.DATASOURCE_URL }
-    username: ${secret.DATASOURCE_USERNAME}
-    password: ${secret.aws.DATASOURCE_PASSWORD}
+    username: ${ secret.DATASOURCE_USERNAME }
+    password: ${ secret.aws.DATASOURCE_PASSWORD }
+    driver-class-name: com.mysql.jdbc.Driver
 
   # JPA 설정
   jpa:

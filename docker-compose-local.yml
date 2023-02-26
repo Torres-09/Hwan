@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - REDIS_HOST=redis
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=local
+      - MYSQL_USER=local
+      - MYSQL_PASSWORD=local123
+    depends_on:
+      - redis
+      - mysql
+  redis:
+    volumes:
+      - ./redis_data:/data
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=local
+      - MYSQL_USER=local
+      - MYSQL_PASSWORD=local123
+      - MYSQL_ROOT_PASSWORD=local123
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-character-set-client-handshake --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+}
