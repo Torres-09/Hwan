@@ -70,6 +70,9 @@ dependencies {
 
 	// batch 추가
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
+
+	// prometheus
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 }
 
 tasks.named('test') {
