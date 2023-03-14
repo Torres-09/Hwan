@@ -15,7 +15,7 @@ jar{
 	enabled = false
 }
 
-group = 'hwan2da'
+group = 'hwan'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
