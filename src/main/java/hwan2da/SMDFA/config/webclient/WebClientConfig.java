@@ -1,4 +1,4 @@
-package hwan2da.SMDFA.config;
+package hwan2da.SMDFA.config.webclient;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
