@@ -69,7 +69,7 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-data-redis'
 
 	// batch 추가
-	implementation 'org.springframework.boot:spring-boot-starter-batch'
+//	implementation 'org.springframework.boot:spring-boot-starter-batch'
 
 	// prometheus
 	implementation 'io.micrometer:micrometer-registry-prometheus'
