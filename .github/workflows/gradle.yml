@@ -24,9 +24,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -64,15 +62,6 @@ jobs:
         echo "${{ secrets.YML_DEV }}" > ./application-dev.yml
       shell: bash
 
-      # 환경별 yml 파일 생성(3) - prod
-    - name: make application-prod.yml
-      if: contains(github.ref, 'main')
-      run: |
-        cd ./src/main/resources
-        touch ./application-prod.yml
-        echo "${{ secrets.YML_PROD }}" > ./application-prod.yml
-      shell: bash
-
     # addition executable permission
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -87,17 +76,17 @@ jobs:
       shell: bash
 
     # AWS Configure
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-        aws-region: ap-northeast-2
-
-    # upload code to S3
-    - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
-
-    # Deploy code from S3 with CodeDeploy
-    - name: Code Deploy
-      run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name $DEPLOYMENT_GROUP_NAME --s3-location bucket=$BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+#    - name: Configure AWS credentials
+#      uses: aws-actions/configure-aws-credentials@v1
+#      with:
+#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+#        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+#        aws-region: ap-northeast-2
+#
+#    # upload code to S3
+#    - name: Upload to S3
+#      run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
+#
+#    # Deploy code from S3 with CodeDeploy
+#    - name: Code Deploy
+#      run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name $DEPLOYMENT_GROUP_NAME --s3-location bucket=$BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
