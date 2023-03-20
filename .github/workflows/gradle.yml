@@ -74,7 +74,7 @@ jobs:
       run: zip -qq -r ./$GITHUB_SHA.zip .
       shell: bash
 
-     AWS Configure
+    # AWS Configure
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
