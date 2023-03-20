@@ -33,6 +33,10 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      # install aws cli
+      - name: install-aws-cli-action
+        uses: unfor19/install-aws-cli-action@v1
+
       # gradle caching
       - name: Gradle Caching
         uses: actions/cache@v3
