@@ -14,7 +14,7 @@ on:
     branches: [ "master" ]
 
 env:
-  PROJECT_NAME: hwan_community_project
+  PROJECT_NAME: hwan
   BUCKET_NAME: hwan-community-code
   CODE_DEPLOY_APP_NAME: Hwan-Community
   DEPLOYMENT_GROUP_NAME: HwanCommunity_deploy
