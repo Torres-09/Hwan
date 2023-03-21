@@ -6,3 +6,9 @@
 - Spring Batch
 - Java 11
 - QueryDSL 5.0.0
+- SonarCloud
+- Docker & Docker-compose
+- Nginx
+- Spring Session & Redis
+- JWT
+- OAuth2.0
