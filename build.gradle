@@ -78,6 +78,9 @@ dependencies {
 
 	// prometheus
 	implementation 'io.micrometer:micrometer-registry-prometheus'
+
+	// Swagger
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
 }
 
 tasks.named('test') {
