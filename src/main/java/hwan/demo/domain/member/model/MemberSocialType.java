@@ -14,7 +14,7 @@ public enum MemberSocialType implements EnumModel {
     NAVER("네이버"),
     GOOGLE("구글"),
     KAKAO("카카오톡"),
-    ;
+    GITHUB("깃허브");
 
     private final String description;
 
