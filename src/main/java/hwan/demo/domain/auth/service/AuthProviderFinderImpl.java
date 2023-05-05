@@ -1,9 +1,6 @@
 package hwan.demo.domain.auth.service;
 
-import hwan.demo.config.provider.AuthProvider;
-import hwan.demo.config.provider.GithubAuthProvider;
-import hwan.demo.config.provider.KakaoAuthProvider;
-import hwan.demo.config.provider.NaverAuthProvider;
+import hwan.demo.config.provider.*;
 import hwan.demo.domain.member.model.MemberSocialType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,12 +17,14 @@ public class AuthProviderFinderImpl implements AuthProviderFinder{
     private final NaverAuthProvider naverAuthProvider;
     private final KakaoAuthProvider kakaoAuthProvider;
     private final GithubAuthProvider githubAuthProvider;
+    private final GoogleAuthProvider googleAuthProvider;
 
     @PostConstruct
     void initializeAuthProviders() {
         authProviderMap.put(MemberSocialType.NAVER, naverAuthProvider);
         authProviderMap.put(MemberSocialType.KAKAO, kakaoAuthProvider);
         authProviderMap.put(MemberSocialType.GITHUB, githubAuthProvider);
+        authProviderMap.put(MemberSocialType.GOOGLE, googleAuthProvider);
     }
 
     @Override
