@@ -11,6 +11,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DanawaProductCodeTest {
+    /**
+     * 다나와 테스트 코드입니다.
+     */
     
     private static final String SEARCH_URL_FORMAT = "https://search.danawa.com/dsearch.php?k1=%s&module=goods&act=dispMain";
     private static final String INFO_URL_FORMAT = "https://prod.danawa.com/info/?pcode=%s";
